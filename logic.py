@@ -128,7 +128,7 @@ def init_search(video, fname):
             
             RedBox = FrameDelta[Top:Bottom,Left:Right,:]
 
-            RedGreenDelta = np.sum(RedBox) - (380*RedContourRad*RedContourRad)
+            RedGreenDelta = np.sum(RedBox) - (360*RedContourRad*RedContourRad)
             TotalDelta = RedGreenDelta / (RedBox.shape[0]*RedBox.shape[1])
             
             for GreenCircle in arrGreenCircle:
@@ -140,7 +140,7 @@ def init_search(video, fname):
                 MaxDeltaY = -5*(RedRad+GreenCircle[0][1])/2
                 if MaxDeltaY < -170:
                     MaxDeltaY = -170
-                if DeltaR > 0.4 and Delta_r < 2.5:
+                if DeltaR > 0.4 and DeltaR < 2.5:
                     if DeltaX < (RedRad/2) and DeltaX > (-RedRad/2):
                         if DeltaY > MaxDeltaY and DeltaY < (-(RedRad+GreenCircle[0][1])/4) and DeltaY < -7:
                             if TotalDelta < 33:
